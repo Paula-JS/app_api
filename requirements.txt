@@ -4,3 +4,4 @@ pandas==2.2.3
 sklearn==1.5.2
 sqalchemy==2.0.73
 gunicorn
+psycopg2==2.9.9
