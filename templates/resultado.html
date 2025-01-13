@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Predicción</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            color: #222;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #555;
+        }
+
+        .result span {
+            color: #8c7c53;
+        }
+
+        .graph-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados de la Predicción</h1>
+        
+        <!-- Resultado de la predicción -->
+        <div class="result">
+            <p>La predicción para los datos proporcionados es: <span>{{ prediccion }}</span></p>
+        </div>
+
+        <!-- Gráfica generada -->
+        <div class="graph-container">
+            <h2>Gráfica de Predicciones</h2>
+            <img src="data:image/png;base64,{{ grafica }}" alt="Gráfica de Predicciones">
+            <a href="/">Volver al formulario</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Titanic Predicciones. Todos los derechos reservados.</p>
+
+        </div>
+    </div>
+</body>
+</html>
