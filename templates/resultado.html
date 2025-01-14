@@ -4,46 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados de la Predicción</title>
+    <!-- Importación de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        /* Estilos generales */
         body {
-            font-family: 'Georgia', serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #00bcd4 0%, #00838f 100%); /* Fondo azul turquesa */
+            color: #ffffff;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo semitransparente */
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 700px;
+            max-width: 900px; /* Ajuste del tamaño máximo */
+            box-sizing: border-box;
+            text-align: center; /* Centrado de todo el contenido */
         }
 
         h1 {
-            font-family: 'Times New Roman', Times, serif;
-            color: #222;
-            text-align: center;
+            color: #2c3e50;
             font-size: 2.5rem;
             margin-bottom: 30px;
+            font-weight: 700;
         }
 
         .result {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 500;
             margin-bottom: 20px;
-            text-align: center;
-            color: #555;
+            color: #2c3e50; /* Color para hacer el texto legible */
+            line-height: 1.6;
         }
 
         .result span {
-            color: #8c7c53;
+            color: #ff5722; /* Color naranja para resaltar la predicción */
+        }
+
+        /* Nuevo color para la respuesta del modelo (texto_ia) */
+        .texto-ia {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #333; /* Color oscuro para mejorar la visibilidad */
+            margin-top: 20px;
+            line-height: 1.6;
         }
 
         .graph-container {
@@ -56,15 +71,92 @@
             height: auto;
             border: 2px solid #ccc;
             border-radius: 10px;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #777;
             margin-top: 20px;
         }
 
+        /* Enlace de retorno */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #00bcd4;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0097a7;
+        }
+
+        /* Estilo de pie de página */
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #f0f0f0;
+            margin-top: 30px;
+        }
+
+        .footer a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 900px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .result {
+                font-size: 1.4rem;
+            }
+
+            .texto-ia {
+                font-size: 1.3rem; /* Ajuste tamaño en pantallas más pequeñas */
+            }
+
+            a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Para dispositivos móviles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .result {
+                font-size: 1.2rem;
+            }
+
+            .texto-ia {
+                font-size: 1.1rem; /* Ajuste aún más el tamaño del texto para móviles */
+            }
+
+            a {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -76,19 +168,22 @@
             <p>La predicción para los datos proporcionados es: <span>{{ prediccion }}</span></p>
         </div>
 
-        <p>{{texto_ia}}</p>
+        <!-- Texto generado por el LLM -->
+        <div class="texto-ia">
+            <p>{{ texto_ia }}</p> <!-- Texto del modelo con nuevo color -->
+        </div>
         
         <!-- Gráfica generada -->
         <div class="graph-container">
             <h2>Gráfica de Predicciones</h2>
             <img src="data:image/png;base64,{{ grafica }}" alt="Gráfica de Predicciones">
-            
-            <a href="/">Volver al formulario</a>
         </div>
+
+        <!-- Enlace de retorno -->
+        <a href="/">Volver al formulario</a>
 
         <div class="footer">
             <p>&copy; 2025 Titanic Predicciones. Todos los derechos reservados.</p>
-
         </div>
     </div>
 </body>

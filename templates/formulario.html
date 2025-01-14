@@ -1,25 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predicción ML</title>
+    <title>Predicción ML - Titanic</title>
+    <!-- Importación de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Poppins', sans-serif; /* Fuente moderna y estilizada */
+            background: linear-gradient(135deg, #00bcd4 0%, #00838f 100%); /* Gradiente azul turquesa */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Contenedor principal */
+        .container {
+            background: rgba(255, 255, 255, 0.95); /* Fondo blanco semitransparente */
+            border-radius: 12px;
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Encabezado */
+        h1 {
+            color: #2c3e50;  /* Gris oscuro */
+            font-size: 40px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        /* Estilo para las etiquetas del formulario */
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        /* Estilo para los campos de entrada */
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #00bcd4;  /* Azul turquesa */
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.8); /* Resaltado azul turquesa */
+        }
+
+        /* Estilo para el botón */
+        button {
+            width: 100%;
+            padding: 16px;
+            background-color: #00bcd4;  /* Azul turquesa */
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #0097a7;  /* Azul más oscuro */
+            transform: scale(1.05);  /* Efecto de zoom */
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Estilo de pie de página */
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #f0f0f0;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        footer a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            label, input[type="number"], button {
+                font-size: 16px;
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Formulario de Predicción</h1>
-    <form action="/predict" method="POST">
-        <label for="pclass">pclass:</label>
-        <input type="number" id="pclass" name="pclass" required><br><br>
+    <div class="container">
+        <h1>Formulario de Predicción Titanic</h1>
+        <form action="/predict" method="POST">
+            <label for="pclass">Clase de Pasajero</label>
+            <input type="number" id="pclass" name="pclass" placeholder="Ejemplo: 1 para primera clase" required><br>
 
-        <label for="sex">sex:</label>
-        <input type="number" id="sex" name="sex" required><br><br>
+            <label for="sex">Género</label>
+            <input type="number" id="sex" name="sex" placeholder="Ejemplo: 1 para hombre, 0 para mujer" required><br>
 
-        <label for="age">age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+            <label for="age">Edad</label>
+            <input type="number" id="age" name="age" placeholder="Ingrese la edad" required><br>
 
+            <button type="submit">Predecir</button>
+        </form>
+    </div>
 
-        <button type="submit">Predecir</button>
-    </form>
-
+    <footer>
+        <p>Hecho con ❤️ por tu equipo de predicción Titanic | <a href="#">Más información</a></p>
+    </footer>
 </body>
 </html>
