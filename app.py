@@ -12,10 +12,13 @@ import base64
 import matplotlib
 matplotlib.use('Agg') 
 import matplotlib.pyplot as plt 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-conexion = "postgresql://postgres:titanicapi@104.199.11.65:5432/postgres"
+conexion = os.environ["CONEXION"]
 engine = create_engine(conexion)
 
 with open("titanic_model.pkl", "rb") as f:
