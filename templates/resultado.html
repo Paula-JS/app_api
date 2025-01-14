@@ -17,34 +17,38 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100%; /* Altura del body ajustada */
+            overflow-y: auto; /* Habilitar scroll vertical si es necesario */
             flex-direction: column;
-            overflow: hidden;
         }
 
         .container {
             background-color: rgba(255, 255, 255, 0.95); /* Fondo semitransparente */
-            padding: 40px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 900px; /* Ajuste del tamaño máximo */
             box-sizing: border-box;
-            text-align: center; /* Centrado de todo el contenido */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%; /* Altura mínima para el contenedor */
         }
 
         h1 {
             color: #2c3e50;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            font-size: 2rem; /* Tamaño ajustado */
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
         .result {
-            font-size: 1.6rem;
+            font-size: 1.4rem; /* Tamaño ajustado */
             font-weight: 500;
-            margin-bottom: 20px;
-            color: #2c3e50; /* Color para hacer el texto legible */
+            margin-bottom: 15px;
+            color: #2c3e50;
             line-height: 1.6;
         }
 
@@ -54,16 +58,17 @@
 
         /* Nuevo color para la respuesta del modelo (texto_ia) */
         .texto-ia {
-            font-size: 1.4rem;
+            font-size: 1.2rem; /* Tamaño ajustado */
             font-weight: 400;
             color: #333; /* Color oscuro para mejorar la visibilidad */
-            margin-top: 20px;
+            margin-top: 15px;
             line-height: 1.6;
         }
 
         .graph-container {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
+            flex-grow: 1; /* Permite que la gráfica ocupe el espacio disponible */
         }
 
         img {
@@ -71,7 +76,8 @@
             height: auto;
             border: 2px solid #ccc;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
+            max-height: 300px; /* Limita la altura de la imagen */
         }
 
         /* Enlace de retorno */
@@ -97,7 +103,7 @@
             text-align: center;
             font-size: 0.9rem;
             color: #f0f0f0;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .footer a {
@@ -112,19 +118,19 @@
         /* Diseño responsivo */
         @media (max-width: 900px) {
             .container {
-                padding: 30px;
+                padding: 15px;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem; /* Tamaño ajustado */
             }
 
             .result {
-                font-size: 1.4rem;
+                font-size: 1.2rem; /* Tamaño ajustado */
             }
 
             .texto-ia {
-                font-size: 1.3rem; /* Ajuste tamaño en pantallas más pequeñas */
+                font-size: 1rem; /* Tamaño ajustado */
             }
 
             a {
@@ -136,20 +142,20 @@
         /* Para dispositivos móviles */
         @media (max-width: 600px) {
             .container {
-                padding: 20px;
+                padding: 10px;
                 margin: 10px;
             }
 
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem; /* Tamaño ajustado */
             }
 
             .result {
-                font-size: 1.2rem;
+                font-size: 1rem; /* Tamaño ajustado */
             }
 
             .texto-ia {
-                font-size: 1.1rem; /* Ajuste aún más el tamaño del texto para móviles */
+                font-size: 0.9rem; /* Tamaño ajustado */
             }
 
             a {
@@ -188,3 +194,4 @@
     </div>
 </body>
 </html>
+
