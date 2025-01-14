@@ -14,6 +14,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt 
 from dotenv import load_dotenv
 import os 
+import google.generativeai as genai
+from utils import get_prompt, get_ts, generar_texto
 
 load_dotenv()
 
@@ -24,11 +26,6 @@ engine = create_engine(conexion)
 
 with open("titanic_model.pkl", "rb") as f:
         modelito = pickle.load(f)
-
-def get_ts():
-    timestamp =datetime.datetime.now().isoformat()
-    return timestamp[0:19]
-
 
 @app.route('/', methods=['GET'])
 def home():
@@ -41,8 +38,10 @@ def predict():
     sex = int(request.form.get("sex"))
     age = int(request.form.get("age"))
     
+    inputs = pclass, sex, age
     
     outputs = modelito.predict([[pclass, sex, age]])
+    output = outputs[0]
     timestamp = get_ts()
 
     
@@ -66,9 +65,16 @@ def predict():
     plt.close(fig)
     
     img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
-
     
-    return render_template("resultado.html", prediccion=int(outputs[0]), grafica=img_base64)
+    #GENERAR TEXTO IA
+    
+    genai.configure(api_key=os.environ["GOOGLE_API_KEY"]) 
+    model = genai.GenerativeModel("gemini-2.0-flash-exp")
+    prompt = get_prompt(inputs, output)
+    generacion = generar_texto(model, prompt, temperature=0.7, top_p=1.0, top_k=40, max_output_tokens=512)
+    
+    
+    return render_template("resultado.html", prediccion=int(outputs[0]), grafica=img_base64, texto_ia=generacion)
     
 
 @app.route("/results", methods=["GET"])
